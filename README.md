@@ -1,2 +1,2 @@
 # SimPhysics-NeoMatrix
-This is the Swift Project of NeoMatrix G6 2nd Semester.
+This is the Swift Project of NeoMatrix G8 2nd Semester.
