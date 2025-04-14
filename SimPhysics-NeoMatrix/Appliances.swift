@@ -8,22 +8,34 @@
 import SwiftUI
 
 struct Appliances: View {
+    @EnvironmentObject var items: Items
+    @State private var selectedItem: Item?
     var body: some View {
         ScrollView {
             VStack {
                 LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(names, id: \.self) { name in
+                    ForEach(items.items) { item in
                         ZStack {
-                            Text(name) // 或你要放的内容
-                                .frame(width: 120, height: 120)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .fill(Color.gray.opacity(0.1))
-                                )
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                                )
+                            
+                                Image(item.image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 80)
+                            .frame(width: 120, height: 120)                            .background(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.gray.opacity(0.1))
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                            )
+                        }
+                        .onTapGesture {
+                            if selectedItem == item {
+                                selectedItem = nil 
+                            } else {
+                                selectedItem = item
+                            }
                         }
                     }
                 }
@@ -44,6 +56,7 @@ struct Appliances: View {
 
 #Preview {
    ContentView()
+        .environmentObject(Items())
 }
 
 let columns = [

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Item: Identifiable {
+struct Item: Identifiable, Equatable {
     let id = UUID()
     var name: String
     var image: String
@@ -25,9 +25,11 @@ class Items: ObservableObject {
 
 @main
 struct SimPhysics_NeoMatrixApp: App {
+    @StateObject var items = Items()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(Items())
         }
     }
 }

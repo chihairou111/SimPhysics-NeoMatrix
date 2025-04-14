@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-   
+    @EnvironmentObject var items: Items
     var body: some View {
         ZStack {
             HStack {
@@ -24,4 +24,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(Items())
 }

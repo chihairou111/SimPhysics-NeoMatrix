@@ -12,7 +12,7 @@ struct Sidebar: View {
     @State var isWireSelected = false
     @State var isAppliancesselected = false
     @State var isSettingsSelected = false
-    
+    @EnvironmentObject var items: Items
     var body: some View {
         HStack(spacing: 0) {
 //Menu Button
@@ -130,4 +130,5 @@ struct Sidebar: View {
 
 #Preview {
     Sidebar()
+        .environmentObject(Items())
 }
