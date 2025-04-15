@@ -11,6 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var items: Items
     var body: some View {
         ZStack {
+            CircuitSimulation()
             HStack {
                 Sidebar()
                     .frame(maxWidth: .infinity, alignment: .leading)

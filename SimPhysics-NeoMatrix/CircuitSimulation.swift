@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CircuitSimulation: View {
+    @EnvironmentObject var items: Items
+    
     // 控制缩放比例
     @State private var scale: CGFloat = 1.0
     // 存储偏移量
@@ -92,5 +94,6 @@ struct CircuitSimulation: View {
 }
 
 #Preview {
-    CircuitSimulation()
+    ContentView()
+        .environmentObject(Items())
 }

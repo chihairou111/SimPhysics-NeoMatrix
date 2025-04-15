@@ -21,6 +21,7 @@ class Items: ObservableObject {
         Item(name: "Switch", image: "Switch"),
         Item(name: "Voltmeter", image: "V")
     ]
+    @Published var selectedItem: Item? = nil
 }
 
 @main

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct Appliances: View {
     @EnvironmentObject var items: Items
-    @State private var selectedItem: Item?
     var body: some View {
         ScrollView {
             VStack {
@@ -23,7 +22,7 @@ struct Appliances: View {
                                     .frame(width: 80)
                             .frame(width: 120, height: 120)                            .background(
                                 RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.gray.opacity(0.1))
+                                    .fill(items.selectedItem == item ? Color.blue.opacity(0.15) : Color.gray.opacity(0.1))
                             )
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20)
@@ -31,11 +30,12 @@ struct Appliances: View {
                             )
                         }
                         .onTapGesture {
-                            if selectedItem == item {
-                                selectedItem = nil 
+                            if items.selectedItem == item {
+                                items.selectedItem = nil
                             } else {
-                                selectedItem = item
+                                items.selectedItem = item
                             }
+                            
                         }
                     }
                 }
